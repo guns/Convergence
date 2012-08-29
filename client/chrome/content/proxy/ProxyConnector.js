@@ -30,7 +30,7 @@ ProxyConnector.prototype.makeMultiConnection = function(destinations) {
   if (this.proxy.type == "http") {
     var proxyConnector = new HttpProxyConnector(this.proxy);
     return proxyConnector.makeMultiConnection(destinations);
-  } else if (this.proxy.type == "socks") {
+  } else if (/^socks(4|5)?/.test(this.proxy.type)) {
     var proxyConnector = new SOCKS5Connector(this.proxy);
     return proxyConnector.makeMultiConnection(destinations);
   } else {
@@ -42,7 +42,7 @@ ProxyConnector.prototype.makeConnection = function(destinationSocket, host, port
   if (this.proxy.type == "http") {
     var proxyConnector = new HttpProxyConnector(this.proxy);
     proxyConnector.makeConnection(destinationSocket, host, port);
-  } else if (this.proxy.type == "socks") {
+  } else if (/^socks(4|5)?/.test(this.proxy.type)) {
     var proxyConnector = new SOCKS5Connector(this.proxy);
     proxyConnector.makeConnection(destinationSocket, host, port);
   } else {
