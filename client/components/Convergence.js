@@ -299,6 +299,7 @@ Convergence.prototype = {
     return uri.host == "localhost"        ||
            uri.host == "127.0.0.1"        ||
            uri.host == "aus3.mozilla.org" ||
+           /\.dev$/.test(uri.host)        ||
            (this.settingsManager.getPrivateIpExempt() && 
             this.rfc1918.test(uri.host));
   },
