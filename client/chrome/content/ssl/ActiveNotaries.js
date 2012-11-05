@@ -86,7 +86,7 @@ ActiveNotaries.prototype.checkHostValidity = function(host, port, certificate) {
 
     if (notaryResponse == ConvergenceResponseStatus.VERIFICATION_SUCCESS) {
       successCount++;
-    } else if (this.isStandAsideResponse(notaryResponse)) {
+    } else if (notaryResponse != ConvergenceResponseStatus.VERIFICATION_FAILURE) {
       checkedNotaryCount--;
     }
 
